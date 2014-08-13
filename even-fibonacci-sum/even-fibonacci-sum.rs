@@ -14,7 +14,6 @@ pub fn fibonacci_with_init<T>(a0: T, a1: T) -> Fibonacci<T> {
 pub struct Fibonacci<T> { current: T, next: T }
 
 impl<T: Add<T,T>> Iterator<T> for Fibonacci<T> {
-    #[inline]
     fn next(&mut self) -> Option<T> {
         let new_next    = self.current + self.next;
         let new_current = mem::replace(&mut self.next, new_next);
