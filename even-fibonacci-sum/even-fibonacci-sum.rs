@@ -3,15 +3,15 @@ use std::iter::AdditiveIterator;
 use std::mem;
 use std::num::One;
 
-pub fn fibonacci<T: One>() -> Fibonacci<T> {
+fn fibonacci<T: One>() -> Fibonacci<T> {
     fibonacci_with_init(One::one(), One::one())
 }
 
-pub fn fibonacci_with_init<T>(a0: T, a1: T) -> Fibonacci<T> {
+fn fibonacci_with_init<T>(a0: T, a1: T) -> Fibonacci<T> {
     Fibonacci { current: a0, next: a1 }
 }
 
-pub struct Fibonacci<T> { current: T, next: T }
+struct Fibonacci<T> { current: T, next: T }
 
 impl<T: Add<T,T>> Iterator<T> for Fibonacci<T> {
     fn next(&mut self) -> Option<T> {
